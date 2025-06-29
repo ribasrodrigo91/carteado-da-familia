@@ -314,8 +314,8 @@ function renderCharts() {
             datasets: [{
                 label: 'Aproveitamento (%)',
                 data: winRateValues,
-                backgroundColor: 'rgba(75, 192, 192, 0.6)',
-                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(210, 4, 45, 0.7)', // Vermelho baralho
+                borderColor: 'rgba(210, 4, 45, 1)',
                 borderWidth: 1
             }]
         },
@@ -331,8 +331,8 @@ function renderCharts() {
             datasets: [{
                 label: 'Média de Pontuação',
                 data: avgScoreValues,
-                backgroundColor: 'rgba(255, 99, 132, 0.6)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(30, 30, 30, 0.8)', // Preto baralho
+                borderColor: 'rgba(30, 30, 30, 1)',
                 borderWidth: 1
             }]
         },

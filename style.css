@@ -1,15 +1,18 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #006400; /* Verde escuro de mesa de poker mais vibrante */
-    color: #e0e0e0; /* Texto claro */
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    background-color: #10451d; /* Verde mais escuro e sóbrio */
+    color: #f0f0f0;
     margin: 0;
     padding: 20px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
-    background-image: url('https://www.transparenttextures.com/patterns/dark-denim.png'); /* Textura sutil */
-    background-size: cover;
+    /* Textura sutil de feltro com CSS */
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                      radial-gradient(rgba(255, 255, 255, 0.05) 1px, #10451d 1px);
+    background-size: 4px 4px, 4px 4px;
+    background-position: 0 0, 2px 2px;
 }
 
 .dashboard-container {
@@ -25,55 +28,72 @@ body {
 
 .dashboard-header {
     text-align: center;
-    margin-bottom: 50px;
-    color: #ffd700; /* Dourado para títulos */
-    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.9);
+    margin-bottom: 40px;
+    padding: 20px;
+    border-bottom: 4px solid #c8a464; /* Dourado envelhecido */
+    position: relative;
+}
+
+.dashboard-header::before {
+    content: '♠ ♥ ♦ ♣';
+    font-size: 2em;
+    color: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: -10px;
+    left: 0;
+    letter-spacing: 20px;
 }
 
 .dashboard-header h1 {
-    font-family: 'Georgia', serif; /* Fonte mais clássica */
-    font-size: 4em;
-    margin-bottom: 15px;
-    letter-spacing: 4px;
-    font-weight: bold;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 3.5em;
+    color: #f5deb3; /* Trigo, um tom de "ouro" mais suave */
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    letter-spacing: 3px;
 }
 
 .dashboard-header p {
-    font-size: 1.4em;
-    opacity: 0.95;
+    font-size: 1.3em;
+    color: #d3d3d3; /* Cinza claro */
+    font-style: italic;
 }
 
 .card-like {
-    background-color: #282828; /* Fundo de "carta" mais escuro */
-    border-radius: 15px;
-    padding: 30px;
-    margin-bottom: 30px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7); /* Sombra mais pronunciada */
-    border: 2px solid #666; /* Borda sutil */
-    position: relative;
-    overflow: hidden;
-}
-
-.card-like::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.1) 100%);
-    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.5);
+    border: 1px solid #444;
+    backdrop-filter: blur(5px);
 }
 
 .filters-section h2,
 .table-container h2,
 .chart-container h2 {
-    color: #ffd700; /* Dourado para subtítulos */
+    color: #f5deb3; /* Trigo */
     margin-top: 0;
-    margin-bottom: 25px;
-    border-bottom: 3px solid #888; /* Linha divisória mais forte */
-    padding-bottom: 12px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #c8a464;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
 }
+
+.filters-section h2::before,
+.table-container h2::before,
+.chart-container h2::before {
+    font-size: 1.2em;
+    margin-right: 10px;
+    color: #c8a464;
+}
+
+.filters-section h2::before { content: '♣'; }
+.table-container h2::before { content: '♦'; }
+.chart-container h2::before { content: '♥'; }
 
 .filter-group {
     margin-bottom: 18px;
@@ -196,18 +216,93 @@ canvas {
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
-    .data-section,
+@media (max-width: 992px) {
     .charts-section {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Gráficos em coluna única em tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px; /* Menos padding no corpo */
+    }
+
+    .dashboard-container {
+        padding: 20px 15px; /* Menos padding no container principal */
     }
 
     .dashboard-header h1 {
-        font-size: 3em;
+        font-size: 2.2em; /* Fonte do título menor */
+        letter-spacing: 1px;
+    }
+    
+    .dashboard-header p {
+        font-size: 1.1em;
+    }
+
+    .dashboard-header::before {
+        font-size: 1.5em;
+        letter-spacing: 15px;
+    }
+
+    .filters-section .filter-group {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
     }
 
     .filter-group input[type="date"] {
         width: 100%;
+        box-sizing: border-box;
         margin-bottom: 10px;
+    }
+
+    .filter-group span {
+        display: none; /* Esconde o "até" entre as datas */
+    }
+
+    .filters-section button {
+        width: 100%;
+        margin-top: 10px;
+        margin-right: 0;
+        box-sizing: border-box;
+    }
+    
+    button + button {
+        margin-top: 10px;
+    }
+
+    .charts-section {
+        grid-template-columns: 1fr; /* Garante uma coluna */
+    }
+
+    table {
+        min-width: 0; /* Remove a largura mínima em telas pequenas */
+    }
+
+    table th,
+    table td {
+        padding: 10px 6px; /* Padding menor nas células da tabela */
+        font-size: 0.85em; /* Fonte menor para mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-header h1 {
+        font-size: 1.8em; /* Ainda menor para telas pequenas */
+    }
+
+    .card-like {
+        padding: 15px;
+    }
+
+    button {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+
+    table th,
+    table td {
+        font-size: 0.75em; /* Fonte ainda menor para telas muito pequenas */
     }
 }

@@ -1,0 +1,212 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #004d00; /* Verde escuro de mesa de poker */
+    color: #e0e0e0; /* Texto claro */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-image: url('https://www.transparenttextures.com/patterns/dark-denim.png'); /* Textura sutil */
+    background-size: cover;
+}
+
+.dashboard-container {
+    background-color: #1a1a1a; /* Fundo do dashboard mais escuro */
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7); /* Sombra mais pronunciada */
+    padding: 30px;
+    max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 3px solid #ffcc00; /* Borda dourada */
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #ffcc00; /* Dourado para títulos */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.9);
+}
+
+.dashboard-header h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.dashboard-header p {
+    font-size: 1.3em;
+    opacity: 0.9;
+}
+
+.card-like {
+    background-color: #2a2a2a; /* Fundo de "carta" mais escuro */
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Sombra mais pronunciada */
+    border: 1px solid #555; /* Borda sutil */
+    position: relative;
+    overflow: hidden;
+}
+
+.card-like::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.07) 100%);
+    pointer-events: none;
+}
+
+.filters-section h2,
+.table-container h2,
+.chart-container h2 {
+    color: #ffcc00; /* Dourado para subtítulos */
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #777; /* Linha divisória mais forte */
+    padding-bottom: 10px;
+}
+
+.filter-group {
+    margin-bottom: 15px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ccc;
+}
+
+.filter-group select,
+.filter-group input[type="date"] {
+    width: calc(100% - 20px); /* Ajuste para padding */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #666;
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.filter-group input[type="date"] {
+    width: 48%; /* Para dois inputs de data */
+    display: inline-block;
+}
+
+.filter-group span {
+    margin: 0 5px;
+}
+
+button {
+    background-color: #007bff; /* Azul vibrante */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    margin-right: 10px;
+}
+
+button#clear-filters {
+    background-color: #dc3545; /* Vermelho para limpar */
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+button#clear-filters:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+}
+
+.data-section {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.charts-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.chart-container {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.table-scroll-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    min-width: 600px;
+}
+
+table th,
+table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #555;
+    white-space: nowrap;
+}
+
+table th {
+    background-color: #4a4a4a;
+    color: #ffcc00;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #333;
+}
+
+table tbody tr:hover {
+    background-color: #444;
+}
+
+canvas {
+    background-color: #4a4a4a;
+    border-radius: 8px;
+    padding: 10px;
+    max-height: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .data-section,
+    .charts-section {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-header h1 {
+        font-size: 2.5em;
+    }
+
+    .filter-group input[type="date"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

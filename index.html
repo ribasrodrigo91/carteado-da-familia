@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carteado da Família - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Carteado da Família</h1>
+            <p>Classificação dos Jogos de Pontinho e Mexe-Mexe</p>
+        </header>
+
+        <div class="filters-section card-like">
+            <h2>Filtros</h2>
+            <div class="filter-group">
+                <label for="game-filter">Jogo:</label>
+                <select id="game-filter">
+                    <option value="all">Todos</option>
+                    <option value="Pontinho">Pontinho</option>
+                    <option value="Mexe-Mexe">Mexe-Mexe</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="player-filter">Jogador:</label>
+                <select id="player-filter">
+                    <option value="all">Todos</option>
+                    <!-- Opções de jogadores serão preenchidas via JS -->
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="period-filter">Período:</label>
+                <input type="date" id="start-date-filter">
+                <span>até</span>
+                <input type="date" id="end-date-filter">
+            </div>
+            <button id="apply-filters">Aplicar Filtros</button>
+            <button id="clear-filters">Limpar Filtros</button>
+        </div>
+
+        <section class="data-section">
+            <div class="table-container card-like">
+                <h2>Tabela de Jogos (Dados Brutos)</h2>
+                <div class="table-scroll-wrapper">
+                    <table id="games-table">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Jogo</th>
+                                <!-- Colunas de jogadores serão preenchidas via JS -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dados serão preenchidos via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="table-container card-like">
+                <h2>Classificação por Aproveitamento (Vitórias/Partidas)</h2>
+                <table id="win-rate-table">
+                    <thead>
+                        <tr>
+                            <th>Ranking</th>
+                            <th>Jogador</th>
+                            <th>Partidas Jogadas</th>
+                            <th>Vitórias</th>
+                            <th>Aproveitamento (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dados serão preenchidos via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-container card-like">
+                <h2>Classificação por Média de Pontuação</h2>
+                <table id="avg-score-table">
+                    <thead>
+                        <tr>
+                            <th>Ranking</th>
+                            <th>Jogador</th>
+                            <th>Média de Pontuação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dados serão preenchidos via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-container card-like">
+                <h2>Ranking de Pontos (Total)</h2>
+                <table id="total-score-table">
+                    <thead>
+                        <tr>
+                            <th>Ranking</th>
+                            <th>Jogador</th>
+                            <th>Pontuação Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dados serão preenchidos via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="charts-section">
+            <div class="chart-container card-like">
+                <h2>Gráfico de Barras: Aproveitamento</h2>
+                <canvas id="win-rate-chart"></canvas>
+            </div>
+
+            <div class="chart-container card-like">
+                <h2>Gráfico de Barras: Média de Pontuação</h2>
+                <canvas id="avg-score-chart"></canvas>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

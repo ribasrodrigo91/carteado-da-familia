@@ -107,31 +107,32 @@ function renderGamesTable() {
         headerRow.insertCell().textContent = player;
     });
 
-    // Agrupar dados por partida (MatchId)
-    const gamesGrouped = {};
+    // Agrupar dados por partida (MatchId) - REMOVIDO O AGRUPAMENTO, AGORA CADA LINHA É UMA PARTIDA
+    // Vamos coletar todas as partidas únicas com base no MatchId
+    const uniqueMatches = {};
     filteredGameData.forEach(game => {
-        if (!gamesGrouped[game.MatchId]) {
-            gamesGrouped[game.MatchId] = { 
+        if (!uniqueMatches[game.MatchId]) {
+            uniqueMatches[game.MatchId] = { 
                 Data: game.Data,
                 Jogo: game.Jogo,
-                MatchId: game.MatchId
+                MatchId: game.MatchId,
+                scores: {} // Para armazenar as pontuações dos jogadores nesta partida
             };
-            sortedPlayers.forEach(player => gamesGrouped[game.MatchId][player] = '-'); // Inicializar com '-' para jogadores que não jogaram
         }
-        gamesGrouped[game.MatchId][game.Jogador] = game.Pontuacao; // Preencher pontuação
+        uniqueMatches[game.MatchId].scores[game.Jogador] = game.Pontuacao;
     });
 
     // Converter objeto agrupado em array e ordenar por MatchId
-    const sortedGames = Object.values(gamesGrouped).sort((a, b) => a.MatchId - b.MatchId);
+    const sortedMatches = Object.values(uniqueMatches).sort((a, b) => a.MatchId - b.MatchId);
 
-    sortedGames.forEach((game) => {
+    sortedMatches.forEach((match) => {
         const row = gamesTableBody.insertRow();
-        row.insertCell().textContent = game.Data.toLocaleDateString('pt-BR');
-        row.insertCell().textContent = game.Jogo;
-        row.insertCell().textContent = game.MatchId; // Usar MatchId como número da partida
+        row.insertCell().textContent = match.Data.toLocaleDateString('pt-BR');
+        row.insertCell().textContent = match.Jogo;
+        row.insertCell().textContent = match.MatchId; // Usar MatchId como número da partida
 
         sortedPlayers.forEach(player => {
-            row.insertCell().textContent = game[player];
+            row.insertCell().textContent = match.scores[player] !== undefined ? match.scores[player] : '-';
         });
     });
 }

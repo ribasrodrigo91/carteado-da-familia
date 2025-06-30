@@ -123,7 +123,9 @@ function renderGamesTable() {
     });
 
     // Converter objeto agrupado em array e ordenar por MatchId
-    const sortedMatches = Object.values(uniqueMatches).sort((a, b) => a.MatchId - b.MatchId);
+    console.log('uniqueMatches before sorting:', uniqueMatches);
+    const sortedMatches = Object.values(uniqueMatches).sort((a, b) => b.MatchId - a.MatchId); // Sort by MatchId descending (most recent first)
+    console.log('sortedMatches after sorting:', sortedMatches);
 
     sortedMatches.forEach((match) => {
         const row = gamesTableBody.insertRow();

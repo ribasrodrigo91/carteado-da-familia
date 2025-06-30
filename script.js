@@ -123,7 +123,9 @@ function renderGamesTable() {
     });
 
     // Converter objeto agrupado em array e ordenar por MatchId
-    const sortedMatches = Object.values(uniqueMatches).sort((a, b) => a.MatchId - b.MatchId);
+    console.log('uniqueMatches before sorting:', uniqueMatches);
+    const sortedMatches = Object.values(uniqueMatches).sort((a, b) => b.MatchId - a.MatchId); // Sort by MatchId descending (most recent first)
+    console.log('sortedMatches after sorting:', sortedMatches);
 
     sortedMatches.forEach((match) => {
         const row = gamesTableBody.insertRow();
@@ -132,7 +134,15 @@ function renderGamesTable() {
         row.insertCell().textContent = match.MatchId; // Usar MatchId como número da partida
 
         sortedPlayers.forEach(player => {
-            row.insertCell().textContent = match.scores[player] !== undefined ? match.scores[player] : '-';
+            const cell = row.insertCell();
+            const score = match.scores[player];
+            cell.textContent = score !== undefined ? score : '-';
+
+            // Check if this player won this specific match
+            const playerGame = filteredGameData.find(g => g.MatchId === match.MatchId && g.Jogador === player);
+            if (playerGame && playerGame.Vitoria) {
+                cell.classList.add('win-highlight');
+            }
         });
     });
 }
@@ -164,8 +174,21 @@ function renderWinRateTable() {
     winRateTableBody.innerHTML = '';
     winRateData.forEach((data, index) => {
         const row = winRateTableBody.insertRow();
-        row.insertCell().textContent = index + 1; // Ranking
-        row.insertCell().textContent = data.player;
+        const rankCell = row.insertCell();
+        const playerCell = row.insertCell();
+
+        rankCell.textContent = index + 1; // Ranking
+        playerCell.textContent = data.player;
+
+        if (index === 0) {
+            row.classList.add('rank-1');
+            playerCell.innerHTML = '<span class="trophy-icon">🏆</span> ' + data.player;
+        } else if (index === 1) {
+            row.classList.add('rank-2');
+        } else if (index === 2) {
+            row.classList.add('rank-3');
+        }
+
         row.insertCell().textContent = data.played;
         row.insertCell().textContent = data.wins;
         row.insertCell().textContent = data.winRate.toFixed(2) + '%';
@@ -195,8 +218,21 @@ function renderAvgScoreTable() {
     avgScoreTableBody.innerHTML = '';
     avgScoreData.forEach((data, index) => {
         const row = avgScoreTableBody.insertRow();
-        row.insertCell().textContent = index + 1; // Ranking
-        row.insertCell().textContent = data.player;
+        const rankCell = row.insertCell();
+        const playerCell = row.insertCell();
+
+        rankCell.textContent = index + 1; // Ranking
+        playerCell.textContent = data.player;
+
+        if (index === 0) {
+            row.classList.add('rank-1');
+            playerCell.innerHTML = '<span class="trophy-icon">🏆</span> ' + data.player;
+        } else if (index === 1) {
+            row.classList.add('rank-2');
+        } else if (index === 2) {
+            row.classList.add('rank-3');
+        }
+
         row.insertCell().textContent = data.avgScore.toFixed(2);
     });
 }
@@ -223,8 +259,21 @@ function renderTotalScoreTable() {
     totalScoreTableBody.innerHTML = '';
     totalScoreData.forEach((data, index) => {
         const row = totalScoreTableBody.insertRow();
-        row.insertCell().textContent = index + 1; // Ranking
-        row.insertCell().textContent = data.player;
+        const rankCell = row.insertCell();
+        const playerCell = row.insertCell();
+
+        rankCell.textContent = index + 1; // Ranking
+        playerCell.textContent = data.player;
+
+        if (index === 0) {
+            row.classList.add('rank-1');
+            playerCell.innerHTML = '<span class="trophy-icon">🏆</span> ' + data.player;
+        } else if (index === 1) {
+            row.classList.add('rank-2');
+        } else if (index === 2) {
+            row.classList.add('rank-3');
+        }
+
         row.insertCell().textContent = data.totalScore;
     });
 }

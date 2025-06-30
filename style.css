@@ -215,6 +215,37 @@ canvas {
     max-height: 100%;
 }
 
+/* Highlight for wins */
+.win-highlight {
+    background-color: rgba(0, 128, 0, 0.3); /* Green with some transparency */
+    color: #aaffaa; /* Lighter green text */
+    font-weight: bold;
+}
+
+/* Ranking highlights */
+.rank-1 {
+    background-color: rgba(255, 215, 0, 0.2); /* Gold with transparency */
+    color: #ffd700; /* Gold text */
+    font-weight: bold;
+}
+
+.rank-2 {
+    background-color: rgba(192, 192, 192, 0.2); /* Silver with transparency */
+    color: #c0c0c0; /* Silver text */
+}
+
+.rank-3 {
+    background-color: rgba(205, 127, 50, 0.2); /* Bronze with transparency */
+    color: #cd7f32; /* Bronze text */
+}
+
+/* Trophy icon styling */
+.trophy-icon {
+    margin-right: 5px;
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+
 /* Responsividade */
 @media (max-width: 992px) {
     .charts-section {

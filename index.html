@@ -19,7 +19,7 @@
             <div class="filter-group">
                 <label for="game-filter">Jogo:</label>
                 <select id="game-filter">
-                    <option value="all">Todos</option>
+                    <option value="all">Selecione um jogo</option>
                     <option value="Pontinho">Pontinho</option>
                     <option value="Mexe-Mexe">Mexe-Mexe</option>
                 </select>
@@ -27,7 +27,7 @@
             <div class="filter-group">
                 <label for="player-filter">Jogador:</label>
                 <select id="player-filter">
-                    <option value="all">Todos</option>
+                    <option value="all">Selecione um jogador</option>
                     <!-- Opções de jogadores serão preenchidas via JS -->
                 </select>
             </div>
@@ -43,7 +43,7 @@
 
         <section class="data-section">
             <div class="table-container card-like">
-                <h2>Tabela de Jogos (Dados Brutos)</h2>
+                <h2>Histórico de Partidas</h2>
                 <div class="table-scroll-wrapper">
                     <table id="games-table">
                         <thead>
@@ -61,7 +61,7 @@
             </div>
 
             <div class="table-container card-like">
-                <h2>Classificação por Aproveitamento (Vitórias/Partidas)</h2>
+                <h2>Classificação por Aproveitamento: Vitórias por Partidas</h2>
                 <div class="table-scroll-wrapper">
                     <table id="win-rate-table">
                         <thead>
@@ -119,12 +119,12 @@
 
         <section class="charts-section">
             <div class="chart-container card-like">
-                <h2>Gráfico de Barras: Aproveitamento</h2>
+                <h2>Aproveitamento por jogador</h2>
                 <canvas id="win-rate-chart"></canvas>
             </div>
 
             <div class="chart-container card-like">
-                <h2>Gráfico de Barras: Média de Pontuação</h2>
+                <h2>Média de Pontuação por Jogador</h2>
                 <canvas id="avg-score-chart"></canvas>
             </div>
         </section>
